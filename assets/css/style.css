@@ -17,3 +17,11 @@ body {
 .form1 {
     margin: 0 auto;
 }
+
+.lead {
+    font-size: 35px;
+}
+
+.miles {
+    font-size: 30px;
+}

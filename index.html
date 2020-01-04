@@ -43,15 +43,10 @@
                 adventure?
               </h2>
               <div>
-                <label for="length" class="lead">Mile Radius</label>
-                <div class="d-flex justify-content-center my-4">
-                  <span class="font-weight-bold indigo-text mr-2 mt-1">1</span>
-                  <form class="range-field w-25">
-                    <input class="border-1" type="range" min="0" max="100" />
-                  </form>
-                  <span class="font-weight-bold indigo-text ml-2 mt-1">25</span>
+                <div class="slidecontainer">
+                  <input type="range" min="5" max="25" value="5" class="slider" id="myRange">
+                  <p class="miles">Miles: <span id="demo"></span></p>
                 </div>
-              </div>
 
               <button class="btn btn-primary btn-lg" id="generate">
                 Pick for me!
@@ -62,8 +57,20 @@
       </div>
     </main>
 
+
+    <script>
+      var slider = document.getElementById("myRange");
+      var output = document.getElementById("demo");
+      output.innerHTML = slider.value;
+      
+      slider.oninput = function() {
+        output.innerHTML = this.value;
+      }
+      </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <script src="script.js"></script>
+    <script src="script.js">
+    </script>
   </body>
 </html>
