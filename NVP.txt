@@ -1,0 +1,1 @@
+added a cors extention to my broswer, also make sure that i add the HTTPS:// to all the weather API
