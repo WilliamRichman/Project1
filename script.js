@@ -15,7 +15,7 @@
    const temp = response.main.temp;
    console.log(temp);
 
-   const rain = response.weather.0.main;
+   const rain = response.weather[0].main;
    console.log(rain)
 
 
