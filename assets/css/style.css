@@ -1,7 +1,25 @@
+body {
+    background-color: blue; 
+}
+.header {
+    font-size: 100px;
+    color: black;
+    text-align: center;
+}
+.container {
+    text-align: center;
+    width: 700px;
+    height: 700px;
+}
+.form1 {
+    margin: 0 auto;
+}
+
+
 .star{
     color: goldenrod;
-    font-size: 2.0rem;
-    padding: 0 1rem; /* space out the stars */
+    font-size: 30px;
+    padding: 0 5px; /* space out the stars */
   }
   .star::before{
     content: '\2606';    /* star outline */
