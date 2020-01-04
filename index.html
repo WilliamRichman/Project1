@@ -1,27 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
     <title>Project1</title>
-</head>
-<body>
-    
+  </head>
+  <body>
+    <header class="header">
+      <p>
+        Date Night!
+      </p>
+    </header>
 
+    <main class="container">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="jumbotron">
+              <h1>Not sure of where to eat? Let us decide!</h1>
+              <br />
+              <div>
+                <h2>Step 1: Enter your Zip Code</h2>
+                <input
+                  type="zipcode"
+                  style="width: 150px"
+                  class="form-control form1"
+                  id="exampleZipCode"
+                  placeholder="Your Zipcode"
+                />
+              </div>
+              <br />
+              <h2>
+                Step 2: How far are you willing to go for this food
+                adventure?
+              </h2>
+              <div>
+                <label for="length" class="lead">Mile Radius</label>
+                <div class="d-flex justify-content-center my-4">
+                  <span class="font-weight-bold indigo-text mr-2 mt-1">1</span>
+                  <form class="range-field w-25">
+                    <input class="border-1" type="range" min="0" max="100" />
+                  </form>
+                  <span class="font-weight-bold indigo-text ml-2 mt-1">25</span>
+                </div>
+              </div>
 
+              <button class="btn btn-primary btn-lg" id="generate">
+                Pick for me!
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<script src="script.js">
-
-</script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

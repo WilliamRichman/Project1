@@ -1,0 +1,19 @@
+body {
+    background-color: blue; 
+}
+
+.header {
+    font-size: 100px;
+    color: black;
+    text-align: center;
+}
+
+.container {
+    text-align: center;
+    width: 700px;
+    height: 700px;
+}
+
+.form1 {
+    margin: 0 auto;
+}
