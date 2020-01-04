@@ -1,4 +1,4 @@
-const cityName = 'Scottsdale, AZ';
+const cityName = $('#searchBar').val();
 
 $.ajax({
     url:'https://developers.zomato.com/api/v2.1/locations?query=' + cityName,
@@ -15,7 +15,7 @@ $.ajax({
     
 
     $.ajax({
-        url: 'https://developers.zomato.com/api/v2.1/search?entity_id=' + cityID + '&entity_type=city',
+        url: 'https://developers.zomato.com/api/v2.1/search?entity_id=' + cityID + '&entity_type=city&count50',
         method: 'GET',
         headers: {
             'user-key': 'b5075be7d6cf56502c175fb9e26c2396'
@@ -25,17 +25,13 @@ $.ajax({
 
         const arrayLength = res.results_shown;
         const randRest = res.restaurants[Math.floor(Math.random()*(arrayLength))];
-        console.log(randRest);
         const restName = randRest.restaurant.name;
-        console.log(restName);
         const restAddress = randRest.restaurant.location.address;
-        console.log(restAddress);
+        const restZip = restAddress.slice(-5);
         const restHours = randRest.restaurant.timings;
-        console.log(restHours);
         const restAVGfor2 = randRest.restaurant.average_cost_for_two;
-        console.log(restAVGfor2);
         const restMenuLink = randRest.restaurant.menu_url;
-        console.log(restMenuLink);
+        
     })
 
 })
