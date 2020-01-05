@@ -1,8 +1,10 @@
-const cityName = $('#searchBar').val();
+// const cityName = $('#searchBar').val();
+const cityName = 'flagstaff, az'
 
+//The onclick function that starts the page's seach from the search box.
 $('#generate').on('click', function(){
 
-//The initial AJAX call that identifies the user's searched city, grabs the latitude, longitude, and cityID.    
+// The initial AJAX call that identifies the user's searched city, grabs the latitude, longitude, and cityID.    
     $.ajax({
         url:'https://developers.zomato.com/api/v2.1/locations?query=' + cityName,
         method: "GET",
@@ -42,7 +44,47 @@ $('#generate').on('click', function(){
 
 });
 
+//How the $$$$$ system will add into the page's search.
+// ------------------------------------------------------------------
+// $('.stars').doStuff({
+//     rating: $('.stars').data('rating')
+// })
+// ------------------------------------------------------------------
+// let div = document.getElementByClassName('stars');
+// // let spans = div.getElementsByTagName('span');
+// let spans = div.getElementsByClass('star');
+// console.log(spans);
+// ------------------------------------------------------------------
+// for (let i = 0; i < spans.length; i++) {
+//     // const element = array[i];
+//     console.log(spans[i].innerHTML);
+// }
+// ------------------------------------------------------------------
+// $('.star').on('click', function(){
+//     // let dollarRating = $('.stars');
+//     let dollarRating = $('.star rated');
+//     console.log(dollarRating);
+//     // console.log(dollarRating[0].childElementCount);
+//     let dollar = $('.stars').data('rating');
+//         console.log(dollar);
+//     // $('.stars').each(function(){
+//     //     let dollar = $('.stars').data('rating')
+//     //     console.log(dollar);
+//     // })
+// ------------------------------------------------------------------
+// This is the closest I've come to getting the value of how many dollar signs have been chosen. It's SOOOO close, but for some reason, it's not accurate 100% of the time. Any suggestions would be great.
+$('.star').mouseup(function(){
+    let dollarRating = $('.star.rated').length;
+    // let dollarRating = $('.star.rating')
+    console.log(dollarRating);
+});
 
+
+// });
+
+
+
+//Front-end css stuff
 document.addEventListener('DOMContentLoaded', function(){
     let stars = document.querySelectorAll('.star');
     stars.forEach(function(star){
