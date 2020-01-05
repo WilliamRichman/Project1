@@ -46,41 +46,7 @@ $('#generate').on('click', function(){
 
 //How the $$$$$ system will add into the page's search.
 // ------------------------------------------------------------------
-// $('.stars').doStuff({
-//     rating: $('.stars').data('rating')
-// })
-// ------------------------------------------------------------------
-// let div = document.getElementByClassName('stars');
-// // let spans = div.getElementsByTagName('span');
-// let spans = div.getElementsByClass('star');
-// console.log(spans);
-// ------------------------------------------------------------------
-// for (let i = 0; i < spans.length; i++) {
-//     // const element = array[i];
-//     console.log(spans[i].innerHTML);
-// }
-// ------------------------------------------------------------------
-// $('.star').on('click', function(){
-//     // let dollarRating = $('.stars');
-//     let dollarRating = $('.star rated');
-//     console.log(dollarRating);
-//     // console.log(dollarRating[0].childElementCount);
-//     let dollar = $('.stars').data('rating');
-//         console.log(dollar);
-//     // $('.stars').each(function(){
-//     //     let dollar = $('.stars').data('rating')
-//     //     console.log(dollar);
-//     // })
-// ------------------------------------------------------------------
-// This is the closest I've come to getting the value of how many dollar signs have been chosen. It's SOOOO close, but for some reason, it's not accurate 100% of the time. Any suggestions would be great.
-$('.star').mouseup(function(){
-    let dollarRating = $('.star.rated').length;
-    // let dollarRating = $('.star.rating')
-    console.log(dollarRating);
-});
 
-
-// });
 
 
 
@@ -102,7 +68,7 @@ function setRating(ev){
     let num = 0;
     stars.forEach(function(star, index){
         if(match){
-            star.classList.remove('rated');
+            star.classList.pop('rated');
         }else{
             star.classList.add('rated');
         }
