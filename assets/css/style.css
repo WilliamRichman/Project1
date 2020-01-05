@@ -1,16 +1,31 @@
 body {
-    background-color: blue; 
+    background-image: url("../img/food_chalkboard.jpg");
+    color: white;
+    font-family: 'Permanent Marker', cursive;
 }
-.header {
-    font-size: 100px;
-    color: black;
+
+ /* background-color: rgb(202, 69, 69);  */
+
+.logo {
+    font-size: 130px;
+    color: rgb(255, 255, 255);
     text-align: center;
 }
+
+.logo:hover {
+    color: rgb(201, 100, 100);
+}
+
 .container {
     text-align: center;
-    width: 700px;
-    height: 700px;
+    /* width: 700px;
+    height: 700px; */
 }
+
+.jumbotron-background {
+    background-color: rgb(53, 49, 49);
+}
+
 .form1 {
     margin: 0 auto;
 }
@@ -24,17 +39,18 @@ body {
 }
 
 .star{
-    color: goldenrod;
+    color: rgb(7, 173, 21);
     font-size: 30px;
     padding: 0 5px; /* space out the stars */
   }
   .star::before{
-    content: '\2606';    /* star outline */
+    content: '\2666';
     cursor: pointer;
+    color:goldenrod;
   }
   .star.rated::before{
-    /* the style for a selected star */
-    content: '\2605';  /* filled star */
+    content: '\FF04';
+    color: rgb(7, 173, 21);
   }
   
   .stars{
