@@ -1,6 +1,6 @@
 const cityName = $('#searchBar').val();
 
-$('#searchBar').on('click', function(){
+$('#generate').on('click', function(){
 
 //The initial AJAX call that identifies the user's searched city, grabs the latitude, longitude, and cityID.    
     $.ajax({
@@ -28,6 +28,7 @@ $('#searchBar').on('click', function(){
     
             const arrayLength = res.results_shown;
             const randRest = res.restaurants[Math.floor(Math.random()*(arrayLength))];
+            console.log(randRest);
             const restName = randRest.restaurant.name;
             const restAddress = randRest.restaurant.location.address;
             const restZip = restAddress.slice(-5);
