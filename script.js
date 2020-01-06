@@ -1,5 +1,5 @@
 // const cityName = $('#searchBar').val();
-const cityName = 'flagstaff, az'
+const cityName = 'mesa, az'
 
 //The onclick function that starts the page's seach from the search box.
 $('#generate').on('click', function(){
@@ -80,3 +80,10 @@ function setRating(ev){
     });
     document.querySelector('.stars').setAttribute('data-rating', num);
 }
+
+
+// id="star1"
+// id="star2"
+// id="star3"
+// id="star4"
+// id="star5"
