@@ -1,0 +1,66 @@
+body {
+    background-image: url("../img/food_chalkboard.jpg");
+    color: white;
+    font-family: 'Permanent Marker', cursive;
+}
+
+ /* background-color: rgb(202, 69, 69);  */
+
+.logo {
+    font-size: 130px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.logo:hover {
+    color: rgb(201, 100, 100);
+}
+
+.container {
+    text-align: center;
+    /* width: 700px;
+    height: 700px; */
+}
+
+.jumbotron-background {
+    background-color: rgb(53, 49, 49);
+}
+
+.form1 {
+    margin: 0 auto;
+}
+
+.lead {
+    font-size: 35px;
+}
+
+.miles {
+    font-size: 30px;
+}
+
+.star{
+    color: rgb(7, 173, 21);
+    font-size: 30px;
+    padding: 0 5px; /* space out the stars */
+  }
+  .star::before{
+    content: '\2666';
+    cursor: pointer;
+    color:goldenrod;
+  }
+  .star.rated::before{
+    content: '\FF04';
+    color: rgb(7, 173, 21);
+  }
+  
+  .stars{
+      counter-reset: rateme 0;   
+      font-size: 2.0rem;
+      font-weight: 900;
+  }
+  .star.rated{
+      counter-increment: rateme 1;
+  }
+  .stars::after{
+      content: counter(rateme) '/5';
+  }
