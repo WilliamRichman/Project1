@@ -1,36 +1,12 @@
-    
-    const weather = "https://api.openweathermap.org/data/2.5/weather?zip=85140,us&units=imperial&appid=15976d84b292c4206f0104225b002459"
-    const zip = $("<p>");
-
-    $('.buttons').click(function(zip){
-
-    });
-
-   $.ajax({
-       url: weather,
-       method: "GET"
-   }).then(function(response){
-    console.log(response);
-    
-   const temp = response.main.temp;
-   console.log(temp);
-
-   const rain = response.weather[0].main;
-   console.log(rain)
-
-    //add the temp and rain to the html page
-    $('.buttons').append(temp)
-    //use the append function to test it to add to .buttons
-    $('.buttons').append(rain)
-
-// const cityName = $('#searchBar').val();
-const cityName = 'flagstaff, az'
+const cityName = $('#searchBar').val();
+// const cityName = 'flagstaff, az';
 
 //The onclick function that starts the page's seach from the search box.
-// $('#generate').on('click', function(){
+$('#generate').on('click', function(){
+    // const cityName = 'mesa, az'
+    console.log(cityName);
 
-// The initial AJAX call that identifies the user's searched city, grabs the latitude, longitude, and cityID.    
-    $.ajax({
+    // The initial AJAX call that identifies the user's searched city, grabs the latitude, longitude, and cityID.    
         url:'https://developers.zomato.com/api/v2.1/locations?query=' + cityName,
         method: "GET",
         headers: {
@@ -60,11 +36,36 @@ const cityName = 'flagstaff, az'
             const restAddress = randRest.restaurant.location.address;
             const restZip = restAddress.slice(-5);
             const restHours = randRest.restaurant.timings;
+            const restPrice = randRest.restaurant.price_range;
             const restAVGfor2 = randRest.restaurant.average_cost_for_two;
             const restMenuLink = randRest.restaurant.menu_url;
-            
         })
     
     })
 
 })
+            console.log(restName);
+            console.log(restZip);
+            console.log(restHours);
+            console.log(restPrice);
+            console.log(restAVGfor2);
+            console.log(restMenuLink);
+
+
+            $.ajax({
+                url: 'https://api.openweathermap.org/data/2.5/weather?zip=' + restZip + ',us&units=imperial&appid=15976d84b292c4206f0104225b002459',
+                method: "GET"
+            }).then(function(response){
+                console.log(response);
+                const currentTemp = response.main.temp;
+                console.log(currentTemp);
+         
+                const currentWeather = response.weather[0].main;
+                console.log(currentWeather);
+            });
+
+        });
+    
+    });
+  
+});
