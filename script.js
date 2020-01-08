@@ -27,7 +27,7 @@
 const cityName = 'flagstaff, az'
 
 //The onclick function that starts the page's seach from the search box.
-$('#generate').on('click', function(){
+//$('#generate').on('click', function(){}
 
 // The initial AJAX call that identifies the user's searched city, grabs the latitude, longitude, and cityID.    
     $.ajax({
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function(){
     let target = stars[rating - 1];
     target.dispatchEvent(new MouseEvent('click'));
 });
-function setRating(ev){
+/* function setRating(ev){
     let span = ev.currentTarget;
     let stars = document.querySelectorAll('.star');
     let match = false;
@@ -103,5 +103,5 @@ function setRating(ev){
             num = index + 1;
         }
     });
-    document.querySelector('.stars').setAttribute('data-rating', num);
-}
+    document.querySelector('.stars').setAttribute('data-rating', num); */
+
