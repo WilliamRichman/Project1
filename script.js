@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
     
     const weather = "https://api.openweathermap.org/data/2.5/weather?zip=85140,us&units=imperial&appid=15976d84b292c4206f0104225b002459"
     const zip = $("<p>");
@@ -13,22 +11,21 @@
        method: "GET"
    }).then(function(response){
     console.log(response);
-    
+   });
    const temp = response.main.temp;
    console.log(temp);
 
    const rain = response.weather[0].main;
-   console.log(rain)
+   console.log(rain);
 
     //add the temp and rain to the html page
-    $('.buttons').append(temp)
+    $('.buttons').append(temp);
     //use the append function to test it to add to .buttons
-    $('.buttons').append(rain)
+    $('.buttons').append(rain);
 
 // const cityName = $('#searchBar').val();
-const cityName = 'flagstaff, az'
+const cityName = 'flagstaff, az';
 
->>>>>>> 669bea0b120ac217d802c1782c031b2822fbfc46
 //The onclick function that starts the page's seach from the search box.
 $('#generate').on('click', function(){
     const cityName = $('#searchBar').val();
