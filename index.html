@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
-    <title>Project1</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <title>Project1</title>
 </head>
 
 <body>
@@ -19,64 +19,53 @@
   </header>
 
 
-    <main class="container">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="jumbotron jumbotron-background">
-              <h1>Not sure of where to eat? Let US decide!</h1>
-              <br />
-              <div>
-                <h2>Step 1: Enter your City and State</h2>
-                <input
-                  type="CityState"
-                  style="width: 200px"
-                  class="form-control form1"
-                  id="searchBar"
-                  placeholder="City, State"
-                />
-              </div>
-              <br />
-              <h2>
-                Step 2: How far are you willing to go for this food
-                adventure?
-              </h2>
-              <div>
-                <div class="slidecontainer">
-                  <input type="range" min="5" max="25" value="5" class="slider" id="myRange">
-                  <p class="miles">Miles: <span id="demo"></span></p>
-                </div>
-        
-                        <br>
-                        <h2>Step 3: How much are you wanting to spend?</h2>
-                        
-                        <div class="stars" data-rating="1">
-                            <span class="star">&nbsp;</span>
-                            <span class="star">&nbsp;</span>
-
-                        <button class="btn btn-primary btn-lg" id="generate">
-                            Pick for me!
-                        </button>
-                    </div>
-                </div>
+  <main class="container">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="jumbotron jumbotron-background">
+            <h1>Not sure of where to eat? Let US decide!</h1>
+            <br />
+            <div>
+              <h2>Step 1: Enter your City and State</h2>
+              <input type="CityState" style="width: 200px" class="form-control form1" id="searchBar"
+                placeholder="City, State" />
             </div>
+            <br />
+            <h2>
+              Step 2: How far are you willing to go for this food
+              adventure?
+            </h2>
+            <div>
+              <div class="slidecontainer">
+                <input type="range" min="5" max="25" value="5" class="slider" id="myRange">
+                <p class="miles">Miles: <span id="demo"></span></p>
+              </div>
+
+              <button class="btn btn-primary btn-lg" id="generate">
+                Pick for me!
+              </button>
+            </div>
+          </div>
         </div>
-    </main>
+      </div>
+  </main>
 
 
-    <script>
-      var slider = document.getElementById("myRange");
-      var output = document.getElementById("demo");
-      output.innerHTML = slider.value;
-      
-      slider.oninput = function() {
-        output.innerHTML = this.value;
-      }
-      </script>
+  <script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    slider.oninput = function () {
+      output.innerHTML = this.value;
+    }
+  </script>
 
-    <script src="script.js">
-    </script>
-  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script src="script.js">
+  </script>
+</body>
+
 </html>

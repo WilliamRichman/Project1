@@ -3,10 +3,12 @@ const cityName = $('#searchBar').val();
 
 //The onclick function that starts the page's seach from the search box.
 $('#generate').on('click', function(){
+    const cityName = $('#searchBar').val();
     // const cityName = 'mesa, az'
     console.log(cityName);
 
     // The initial AJAX call that identifies the user's searched city, grabs the latitude, longitude, and cityID.    
+    $.ajax({
         url:'https://developers.zomato.com/api/v2.1/locations?query=' + cityName,
         method: "GET",
         headers: {
@@ -39,12 +41,8 @@ $('#generate').on('click', function(){
             const restPrice = randRest.restaurant.price_range;
             const restAVGfor2 = randRest.restaurant.average_cost_for_two;
             const restMenuLink = randRest.restaurant.menu_url;
-        })
-    
-    })
-
-})
             console.log(restName);
+            console.log(restAddress);
             console.log(restZip);
             console.log(restHours);
             console.log(restPrice);
