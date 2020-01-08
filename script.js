@@ -7,7 +7,7 @@ $('#generate').on('click', function(){
     // const cityName = 'mesa, az'
     console.log(cityName);
 
-    // The initial AJAX call that identifies the user's searched city, grabs the latitude, longitude, and cityID.    
+// The initial AJAX call that identifies the user's searched city, grabs the latitude, longitude, and cityID.    
     $.ajax({
         url:'https://developers.zomato.com/api/v2.1/locations?query=' + cityName,
         method: "GET",
@@ -41,6 +41,15 @@ $('#generate').on('click', function(){
             const restPrice = randRest.restaurant.price_range;
             const restAVGfor2 = randRest.restaurant.average_cost_for_two;
             const restMenuLink = randRest.restaurant.menu_url;
+            $("#resultsDisplay").append('Restaurant Name: ' + restName + '<br>')
+            $("#resultsDisplay").append('Restaurant Address: ' + restAddress + '<br>')
+            
+            $("#resultsDisplay").append('Hours Open: ' + restHours + '<br>')
+            
+            $("#resultsDisplay").append('Average Price for 2: ' + restAVGfor2 + '<br>')
+            $("#resultsDisplay").append('Restaurant Link: ' + restMenuLink + '<br>')
+            
+
             console.log(restName);
             console.log(restAddress);
             console.log(restZip);
@@ -50,17 +59,32 @@ $('#generate').on('click', function(){
             console.log(restMenuLink);
            
 
-
+        //AJAX call to OpenWeather API using restZip
             $.ajax({
                 url: 'https://api.openweathermap.org/data/2.5/weather?zip=' + restZip + ',us&units=imperial&appid=15976d84b292c4206f0104225b002459',
                 method: "GET"
             }).then(function(response){
                 console.log(response);
                 const currentTemp = response.main.temp;
-                console.log(currentTemp);
+                currentTemp.toFixed(0);
+                console.log(currentTemp.toFixed(0));
          
                 const currentWeather = response.weather[0].main;
+                $("#resultsWeather").append('The current temperature is ' + currentTemp.toFixed(0) + ' and it is ' + currentWeather)
                 console.log(currentWeather);
+
+                if (currentTemp < 30){
+                    console.log("holy guacamole! It's cold, ya'll! Take a jacket with you!");
+                }
+                if (currentTemp > 30.01 && currentTemp < 50){
+                    console.log("Brr! It's gettin a bit chilly! Maybe grab a jacket on your way out the door.");
+                }
+                if (currentTemp > 50.01 && currentTemp < 75){
+                    console.log("Weather's beautiful out!");
+                }
+                if (currentTemp >75.01 && currentTemp < 100){
+                    console.log("Oof, gettin warm. Wear somethin light!")
+                }
             });
 
         });
