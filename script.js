@@ -48,6 +48,7 @@ $('#generate').on('click', function(){
             console.log(restPrice);
             console.log(restAVGfor2);
             console.log(restMenuLink);
+           
 
 
             $.ajax({
