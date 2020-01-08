@@ -38,29 +38,3 @@ body {
     font-size: 30px;
 }
 
-.star{
-    color: rgb(7, 173, 21);
-    font-size: 30px;
-    padding: 0 5px; /* space out the stars */
-  }
-  .star::before{
-    content: '\2666';
-    cursor: pointer;
-    color:goldenrod;
-  }
-  .star.rated::before{
-    content: '\FF04';
-    color: rgb(7, 173, 21);
-  }
-  
-  .stars{
-      counter-reset: rateme 0;   
-      font-size: 2.0rem;
-      font-weight: 900;
-  }
-  .star.rated{
-      counter-increment: rateme 1;
-  }
-  .stars::after{
-      content: counter(rateme) '/5';
-  }
