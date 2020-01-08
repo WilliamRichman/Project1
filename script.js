@@ -41,6 +41,15 @@ $('#generate').on('click', function(){
             const restPrice = randRest.restaurant.price_range;
             const restAVGfor2 = randRest.restaurant.average_cost_for_two;
             const restMenuLink = randRest.restaurant.menu_url;
+            $("#resultsDisplay").append('Restaurant Name: ' + restName + '<br>')
+            $("#resultsDisplay").append('Restaurant Address: ' + restAddress + '<br>')
+            
+            $("#resultsDisplay").append('Hours Open: ' + restHours + '<br>')
+            
+            $("#resultsDisplay").append('Average Price for 2: ' + restAVGfor2 + '<br>')
+            $("#resultsDisplay").append('Restaurant Link: ' + restMenuLink + '<br>')
+            
+
             console.log(restName);
             console.log(restAddress);
             console.log(restZip);
@@ -56,9 +65,11 @@ $('#generate').on('click', function(){
             }).then(function(response){
                 console.log(response);
                 const currentTemp = response.main.temp;
-                console.log(currentTemp);
+                currentTemp.toFixed(0);
+                console.log(currentTemp.toFixed(0));
          
                 const currentWeather = response.weather[0].main;
+                $("#resultsWeather").append('The current temperature is ' + currentTemp.toFixed(0) + ' and it is ' + currentWeather)
                 console.log(currentWeather);
             });
 
