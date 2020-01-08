@@ -30,9 +30,29 @@ $('#generate').on('click', function(){
             }
         }).then(function(res){
             console.log(res);
-    
+
+        // Setting variables to use for the filtered price range search
+            const userPriceRange = 2;
+            let filteredRestaurants = [];
+        // For loop that actually filters out any result not less than or equal to the userPriceRange
+            for (let i = 0; i < res.restaurants.length; i++) {                
+                const filterPrice = res.restaurants[i].restaurant.price_range;
+                console.log(filterPrice);
+                if (userPriceRange <= filterPrice){
+                    filteredRestaurants.push(res.restaurants[i]);
+                }                
+            }
+        // If loop that tells the user there wasn't a result within that monitary range
+            if (filteredRestaurants === 0) {
+                alert("No restaurants found within that monitary range. Sorry!")
+            }
+        
+            console.log(filteredRestaurants);
+            
+        // Declared variables to use for appending results to results div
             const arrayLength = res.results_shown;
-            const randRest = res.restaurants[Math.floor(Math.random()*(arrayLength))];
+            const randRest = filteredRestaurants[Math.floor(Math.random()*(arrayLength))];
+            // const randRest = res.restaurants[Math.floor(Math.random()*(arrayLength))];
             console.log(randRest);
             const restName = randRest.restaurant.name;
             const restAddress = randRest.restaurant.location.address;
@@ -42,10 +62,8 @@ $('#generate').on('click', function(){
             const restAVGfor2 = randRest.restaurant.average_cost_for_two;
             const restMenuLink = randRest.restaurant.menu_url;
             $("#resultsDisplay").append('Restaurant Name: ' + restName + '<br>')
-            $("#resultsDisplay").append('Restaurant Address: ' + restAddress + '<br>')
-            
-            $("#resultsDisplay").append('Hours Open: ' + restHours + '<br>')
-            
+            $("#resultsDisplay").append('Restaurant Address: ' + restAddress + '<br>')            
+            $("#resultsDisplay").append('Hours Open: ' + restHours + '<br>')           
             $("#resultsDisplay").append('Average Price for 2: ' + restAVGfor2 + '<br>')
             $("#resultsDisplay").append('Restaurant Link: ' + restMenuLink + '<br>')
             
@@ -82,7 +100,7 @@ $('#generate').on('click', function(){
                     console.log("Weather's beautiful out!");
                 }
                 if (currentTemp >75.01 && currentTemp < 100){
-                    console.log("Oof, gettin warm. Wear somethin light!")
+                    console.log("Oof, gettin warm. Wear somethin light!");
                 }
             });
 
