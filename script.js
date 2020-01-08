@@ -75,6 +75,7 @@ $('#generate').on('click', function(){
             console.log(restPrice);
             console.log(restAVGfor2);
             console.log(restMenuLink);
+           
 
         //AJAX call to OpenWeather API using restZip
             $.ajax({
