@@ -22,10 +22,9 @@
     $('.buttons').append(temp)
     //use the append function to test it to add to .buttons
     $('.buttons').append(rain)
-
+   });
 // const cityName = $('#searchBar').val();
 const cityName = 'flagstaff, az'
-
 //The onclick function that starts the page's seach from the search box.
 $('#generate').on('click', function(){
 
@@ -86,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function(){
     let target = stars[rating - 1];
     target.dispatchEvent(new MouseEvent('click'));
 });
+
 function setRating(ev){
     let span = ev.currentTarget;
     let stars = document.querySelectorAll('.star');
