@@ -3,6 +3,10 @@ const cityName = $('#searchBar').val();
 
 //The onclick function that starts the page's seach from the search box.
 $('#generate').on('click', function(){
+    $( "#resultsDisplay" ).empty();
+    $( "#menuLink" ).empty();
+    $( "#resultsWeather" ).empty();
+    $( "#weatherMessage" ).empty();
     const cityName = $('#searchBar').val();
     // const cityName = 'mesa, az'
     console.log(cityName);
@@ -65,8 +69,7 @@ $('#generate').on('click', function(){
             $("#resultsDisplay").append('Restaurant Address: ' + restAddress + '<br>')            
             $("#resultsDisplay").append('Hours Open: ' + restHours + '<br>')           
             $("#resultsDisplay").append('Average Price for 2: ' + restAVGfor2 + '<br>')
-            $("#resultsDisplay").append('Restaurant Link: ' + restMenuLink + '<br>')
-            
+            $("#menuLink").append('Restaurant Link: ' + restMenuLink + '<br>')
 
             console.log(restName);
             console.log(restAddress);
@@ -93,15 +96,19 @@ $('#generate').on('click', function(){
 
                 if (currentTemp < 30){
                     console.log("holy guacamole! It's cold, ya'll! Take a jacket with you!");
+                    $("#weatherMessage").append("holy guacamole! It's cold, ya'll! Take a jacket with you!")
                 }
                 if (currentTemp > 30.01 && currentTemp < 50){
                     console.log("Brr! It's gettin a bit chilly! Maybe grab a jacket on your way out the door.");
+                    $("#weatherMessage").append("Brr! It's gettin a bit chilly! Maybe grab a jacket on your way out the door.")
                 }
                 if (currentTemp > 50.01 && currentTemp < 75){
                     console.log("Weather's beautiful out!");
+                    $("#weatherMessage").append("Weather's beautiful out!")
                 }
                 if (currentTemp >75.01 && currentTemp < 100){
-                    console.log("Oof, gettin warm. Wear somethin light!");
+                    console.log("Oof, getting warm. Wear somethin light!");
+                    $("#weatherMessage").append("Oof, getting warm. Wear something light!")
                 }
             });
 

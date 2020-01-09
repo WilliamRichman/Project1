@@ -32,7 +32,7 @@
                 placeholder="City, State" />
             </div>
             <br />
-            <h2>
+            <!-- <h2>
               Step 2: How far are you willing to go for this food
               adventure?
             </h2>
@@ -40,7 +40,11 @@
               <div class="slidecontainer">
                 <input type="range" min="5" max="25" value="5" class="slider" id="myRange">
                 <p class="miles">Miles: <span id="demo"></span></p>
-              </div>
+              </div> -->
+
+              Filter restaurant by average price for two: <b>$ 20</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>$ 100</b>
+
+              <br>
 
               <button class="btn btn-primary btn-lg" id="generate">
                 Pick for me!
@@ -52,7 +56,10 @@
 
 
               <div id=resultsDisplay></div>
+              <div id=menuLink></div>
+              <br>
               <div id=resultsWeather></div>
+              <div id=weatherMessage></div>
               
               </div>
             </div>
@@ -62,7 +69,6 @@
     </main>
 
   </script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <script src="script.js">
