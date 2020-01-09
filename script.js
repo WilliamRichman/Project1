@@ -66,11 +66,12 @@ $('#generate').on('click', function(){
             const restPrice = randRest.restaurant.price_range;
             const restAVGfor2 = randRest.restaurant.average_cost_for_two;
             const restMenuLink = randRest.restaurant.menu_url;
-            $("#resultsDisplay").append('Restaurant Name: ' + restName + '<br>')
-            $("#resultsDisplay").append('Restaurant Address: ' + restAddress + '<br>')            
-            $("#resultsDisplay").append('Hours Open: ' + restHours + '<br>')           
-            $("#resultsDisplay").append('Average Price for 2: ' + restAVGfor2 + '<br>')
-            $("#menuLink").append('Restaurant Link: ' + restMenuLink + '<br>')
+            $("#resultsDisplay").append('Restaurant Name: ' + restName + '<br>');
+            $("#resultsDisplay").append('Restaurant Address: ' + restAddress + '<br>');      
+            $("#resultsDisplay").append('Hours Open: ' + restHours + '<br>');
+            $("#resultsDisplay").append('Average Price for two: $' + restAVGfor2 + '<br>');
+            $("#menuLink").append('<a target="_blank" href="' + restMenuLink + '">Menu Link</a>');
+        
 
             console.log(restName);
             console.log(restAddress);
@@ -122,7 +123,7 @@ $('#generate').on('click', function(){
                 if (currentWeather === "Rain"){
                     console.log("And don't forget your umbrella");
                     $("#weatherMessage").append("And don't forget an umbrella");
-                    $("#resultsWeather").append('<img id="rain" src="assets/img/rain2.png" />')
+                    $("#resultsWeather").append('  <img id="rain" src="assets/img/rain2.png" />')
                     $('#rain').width(50); // Units are assumed to be pixels
                     $('#rain').height(50);
                 } 
@@ -130,7 +131,7 @@ $('#generate').on('click', function(){
                 if (currentWeather === "Clouds"){
                     console.log("If it looks like it could rain then maybe grab an umbrella");
                     $("#weatherMessage").append("If it looks like it could rain then maybe grab an umbrella");
-                    $("#resultsWeather").append('<img id="clouds" src="assets/img/clouds.png" />')
+                    $("#resultsWeather").append('  <img id="clouds" src="assets/img/clouds.png" />')
                     $('#clouds').width(50); // Units are assumed to be pixels
                     $('#clouds').height(50);
                 }
