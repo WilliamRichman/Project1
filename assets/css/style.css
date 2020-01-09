@@ -33,3 +33,7 @@ body {
 .lead {
     font-size: 35px;
 }
+
+.results {
+    padding: 20px;
+}
