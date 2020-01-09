@@ -6,6 +6,7 @@ $('#generate').on('click', function(){
     $( "#resultsDisplay" ).empty();
     $( "#menuLink" ).empty();
     $( "#resultsWeather" ).empty();
+    $( "#tempMessage" ).empty();
     $( "#weatherMessage" ).empty();
     const cityName = $('#searchBar').val();
     // const cityName = 'mesa, az'
@@ -90,25 +91,64 @@ $('#generate').on('click', function(){
                 currentTemp.toFixed(0);
                 console.log(currentTemp.toFixed(0));
          
-                const currentWeather = response.weather[0].main;
-                $("#resultsWeather").append('The current temperature is ' + currentTemp.toFixed(0) + ' and it is ' + currentWeather)
+                const currentWeather = response.weather[0].main
+                $("#resultsWeather").append('The current temperature is ' + currentTemp.toFixed(0) + ' and expect a ' + currentWeather + ' day');
                 console.log(currentWeather);
 
                 if (currentTemp < 30){
-                    console.log("holy guacamole! It's cold, ya'll! Take a jacket with you!");
-                    $("#weatherMessage").append("holy guacamole! It's cold, ya'll! Take a jacket with you!")
+                    console.log("Holy Guacamole! It's VERY cold! Bundle up!");
+                    $("#tempMessage").append("Holy Guacamole! It's VERY cold! Bundle up!");
                 }
-                if (currentTemp > 30.01 && currentTemp < 50){
-                    console.log("Brr! It's gettin a bit chilly! Maybe grab a jacket on your way out the door.");
-                    $("#weatherMessage").append("Brr! It's gettin a bit chilly! Maybe grab a jacket on your way out the door.")
+                if (currentTemp > 30.01 && currentTemp < 55){
+                    console.log("Brr! It's a bit chilly! Dress warmly.");
+                    $("#tempMessage").append("Brr! It's a bit chilly! Dress warmly.");
                 }
-                if (currentTemp > 50.01 && currentTemp < 75){
-                    console.log("Weather's beautiful out!");
-                    $("#weatherMessage").append("Weather's beautiful out!")
+                if (currentTemp > 55.01 && currentTemp < 80){
+                    console.log("Not too hot or too cold!");
+                    $("#tempMessage").append("Not too hot or too cold!");
                 }
-                if (currentTemp >75.01 && currentTemp < 100){
-                    console.log("Oof, getting warm. Wear somethin light!");
-                    $("#weatherMessage").append("Oof, getting warm. Wear something light!")
+                if (currentTemp >80.01 && currentTemp < 100){
+                    console.log("Oof, it's getting warm. Wear something light!");
+                    $("#tempMessage").append("Oof, it's getting warm. Wear something light!");
+                }
+
+                if (currentTemp >100.01 && currentTemp < 130){
+                    console.log("HOT, HOT, HOT!");
+                    $("#tempMessage").append("HOT, HOT, HOT!")
+                }
+
+                // seperated weather from temp for two messages that'll be more accurate based on conditions
+
+                if (currentWeather === "Rain"){
+                    console.log("And don't forget your umbrella");
+                    $("#weatherMessage").append("And don't forget an umbrella");
+                    $("#resultsWeather").append('<img id="rain" src="assets/img/rain2.png" />')
+                    $('#rain').width(50); // Units are assumed to be pixels
+                    $('#rain').height(50);
+                } 
+
+                if (currentWeather === "Clouds"){
+                    console.log("If it looks like it could rain then maybe grab an umbrella");
+                    $("#weatherMessage").append("If it looks like it could rain then maybe grab an umbrella");
+                    $("#resultsWeather").append('<img id="clouds" src="assets/img/clouds.png" />')
+                    $('#clouds').width(50); // Units are assumed to be pixels
+                    $('#clouds').height(50);
+                }
+
+                if (currentWeather === "Clear"){
+                    console.log("Looks like it'll be a beautiful day");
+                    $("#weatherMessage").append("Looks like it'll be a beautiful day");
+                    $("#resultsWeather").append('<img id="sunny" src="assets/img/sunny.png" />')
+                    $('#sunny').width(50); // Units are assumed to be pixels
+                    $('#sunny').height(50);
+                }
+
+                if (currentWeather === "Snow"){
+                    console.log("Be careful as you travel!");
+                    $("#weatherMessage").append("Be careful as you travel!");
+                    $("#resultsWeather").append('<img id="snow" src="assets/img/snow.png" />')
+                    $('#snow').width(50); // Units are assumed to be pixels
+                    $('#snow').height(50);
                 }
             });
 
