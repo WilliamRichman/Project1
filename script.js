@@ -20,6 +20,8 @@ $('#generate').on('click', function(){
         const cityID = response.location_suggestions[0].city_id;
         const lat = response.location_suggestions[0].latitude;
         const lon = response.location_suggestions[0].longitude;
+        console.log(lat);
+        console.log(lon);
         
     //This AJAX call searches through Zomato given the cityID from the previous call and will return one random restaurant.
         $.ajax({
@@ -48,12 +50,17 @@ $('#generate').on('click', function(){
             }
         
             console.log(filteredRestaurants);
+
             
         // Declared variables to use for appending results to results div
             const arrayLength = res.results_shown;
+
+            //The "randRest" set to priceRange filter
             const randRest = filteredRestaurants[Math.floor(Math.random()*(arrayLength))];
+            //The "randRest" set to not filters    
             // const randRest = res.restaurants[Math.floor(Math.random()*(arrayLength))];
             console.log(randRest);
+
             const restName = randRest.restaurant.name;
             const restAddress = randRest.restaurant.location.address;
             const restZip = restAddress.slice(-5);
@@ -61,13 +68,17 @@ $('#generate').on('click', function(){
             const restPrice = randRest.restaurant.price_range;
             const restAVGfor2 = randRest.restaurant.average_cost_for_two;
             const restMenuLink = randRest.restaurant.menu_url;
-            $("#resultsDisplay").append('Restaurant Name: ' + restName + '<br>')
-            $("#resultsDisplay").append('Restaurant Address: ' + restAddress + '<br>')            
-            $("#resultsDisplay").append('Hours Open: ' + restHours + '<br>')           
-            $("#resultsDisplay").append('Average Price for 2: ' + restAVGfor2 + '<br>')
-            $("#resultsDisplay").append('Restaurant Link: ' + restMenuLink + '<br>')
-            
 
+            
+        //Appending the results to the page
+            $("#resultsDisplay").append('Restaurant Name: ' + restName + '<br>');
+            $("#resultsDisplay").append('Restaurant Address: ' + restAddress + '<br>');
+            $("#resultsDisplay").append('Hours Open: ' + restHours + '<br>');
+            $("#resultsDisplay").append('Average Price for 2: ' + restAVGfor2 + '<br>');
+            $("#resultsDisplay").append('Restaurant Link: ' + restMenuLink + '<br>');
+            // $("#resultsDisplay").append("<p><a href=\"" + restMenuLink + "\">Click Here!</a></p>");
+
+            
             console.log(restName);
             console.log(restAddress);
             console.log(restZip);
@@ -99,7 +110,7 @@ $('#generate').on('click', function(){
                 if (currentTemp > 50.01 && currentTemp < 75){
                     console.log("Weather's beautiful out!");
                 }
-                if (currentTemp >75.01 && currentTemp < 100){
+                if (currentTemp > 75.01 && currentTemp < 100){
                     console.log("Oof, gettin warm. Wear somethin light!");
                 }
             });
