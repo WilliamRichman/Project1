@@ -27,31 +27,41 @@
             <h1>Not sure of where to eat? Let US decide!</h1>
             <br />
             <div>
-              <h2>Enter your City and State</h2>
+              <h2>Step 1: Enter your City and State</h2>
               <input type="CityState" style="width: 200px" class="form-control form1" id="searchBar"
                 placeholder="City, State" />
             </div>
             <br />
 
+            <h2>Step 2: How much do you want to spend?</h2>
+            
+            <div class="stars" data-rating="1">
+              <span class="star" id="1">&nbsp;</span>
+              <span class="star" id="2">&nbsp;</span>
+              <span class="star" id="3">&nbsp;</span>
+              <span class="star" id="4">&nbsp;</span>
+              <span class="star" id="5">&nbsp;</span>
+            </div>
+
             <br>
 
-              <button class="btn btn-primary btn-lg" id="generate">
-                Pick for me!
-              </button>
+            <button class="btn btn-primary btn-lg" id="generate">
+              Pick for me!
+            </button>
 
-              <div class="results" id=resultsDisplay></div>
-              <div id=menuLink></div>
-              <br>
-              <div id=resultsWeather></div>
-              <div id=tempMessage></div>
-              <div id=weatherMessage></div>
-              
-              </div>
-            </div>
+            <div class="results" id=resultsDisplay></div>
+            <div id=menuLink></div>
+            <br>
+            <div id=resultsWeather></div>
+            <div id=tempMessage></div>
+            <div id=weatherMessage></div>
+
           </div>
         </div>
       </div>
-    </main>
+    </div>
+    </div>
+  </main>
 
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
