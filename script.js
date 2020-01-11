@@ -7,6 +7,7 @@ let restHours = "";
 let restPrice = "";
 let restAVGfor2 = "";
 let restMenuLink = "";
+let cuisineType = "";
 
 document.addEventListener('DOMContentLoaded', function () {
     let stars = document.querySelectorAll('.star');
@@ -111,7 +112,9 @@ $('#generate').on('click', function () {
             restPrice = randRest.restaurant.price_range;
             restAVGfor2 = randRest.restaurant.average_cost_for_two;
             restMenuLink = randRest.restaurant.menu_url;
+            cuisineType = randRest.restaurant.cuisines;
             $("#resultsDisplay").append('Restaurant Name: ' + restName + '<br>');
+            $("#resultsDisplay").append('Cuisine Type: ' + cuisineType + '<br>');
             $("#resultsDisplay").append('Restaurant Address: ' + restAddress + '<br>');
             $("#resultsDisplay").append('Hours Open: ' + restHours + '<br>');
             $("#resultsDisplay").append('Average Price for two: $' + restAVGfor2 + '<br>');
