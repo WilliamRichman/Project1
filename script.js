@@ -1,6 +1,45 @@
 const cityName = $('#searchBar').val();
 // const cityName = 'flagstaff, az';
 
+document.addEventListener('DOMContentLoaded', function(){
+    let stars = document.querySelectorAll('.star');
+    stars.forEach(function(star){
+        star.addEventListener('click', setRating); 
+    });
+    
+    let rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
+    let target = stars[rating - 1];
+    target.dispatchEvent(new MouseEvent('click'));
+});
+
+$('.star').on('click', function(){
+    const dollarId = $(this).attr('id')
+    console.log(dollarId)
+})
+
+
+function setRating(ev){
+    let span = ev.currentTarget;
+    let stars = document.querySelectorAll('.star');
+    let match = false;
+    let num = '';
+    stars.forEach(function(star, index){
+        if(match){
+            star.classList.remove('rated');
+        }else{
+            star.classList.add('rated');
+        }
+        
+        if(star === span){
+            match = true;
+            num = index + 1;
+        }
+        
+    });
+    document.querySelector('.stars').setAttribute('data-rating', num);
+    
+}
+
 //The onclick function that starts the page's seach from the search box.
 $('#generate').on('click', function(){
     $( "#resultsDisplay" ).empty();
@@ -11,7 +50,8 @@ $('#generate').on('click', function(){
     const cityName = $('#searchBar').val();
     // const cityName = 'mesa, az'
     console.log(cityName);
-
+    //dollar sin system
+    
 // The initial AJAX call that identifies the user's searched city, grabs the latitude, longitude, and cityID.    
     $.ajax({
         url:'https://developers.zomato.com/api/v2.1/locations?query=' + cityName,
@@ -37,7 +77,7 @@ $('#generate').on('click', function(){
             console.log(res);
 
         // Setting variables to use for the filtered price range search
-            const userPriceRange = 2;
+            const userPriceRange = 4
             let filteredRestaurants = [];
         // For loop that actually filters out any result not less than or equal to the userPriceRange
             for (let i = 0; i < res.restaurants.length; i++) {                
