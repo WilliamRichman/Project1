@@ -8,6 +8,10 @@ let restPrice = "";
 let restAVGfor2 = "";
 let restMenuLink = "";
 let cuisineType = "";
+let currentTemp = "";
+let currentWeather = "";
+let userPriceRange = "";
+let filterPrice = "";
 
 
 // Waiting for someone to click on a dollar sign
@@ -91,10 +95,10 @@ function weatherCall(){
         url: 'https://api.openweathermap.org/data/2.5/weather?zip=' + restZip + ',us&units=imperial&appid=15976d84b292c4206f0104225b002459',
         method: "GET"
     }).then(function (response) {
-        const currentTemp = response.main.temp;
+        currentTemp = response.main.temp;
         currentTemp.toFixed(0);
 
-        const currentWeather = response.weather[0].main
+        currentWeather = response.weather[0].main
         $("#resultsWeather").append('The current temperature is ' + currentTemp.toFixed(0) + ' and expect a ' + currentWeather + ' day');
 
         if (currentTemp < 30) {
@@ -158,11 +162,11 @@ function doStuff(start, cityID){
     }).then(function (res) {
         console.log(res);
 
-        const userPriceRange = dollarId;
+        userPriceRange = dollarId;
         let filteredRestaurants = [];
         // For loop that actually filters out any result not less than or equal to the userPriceRange
         for (let i = 0; i < res.restaurants.length; i++) {
-            const filterPrice = res.restaurants[i].restaurant.price_range;
+            filterPrice = res.restaurants[i].restaurant.price_range;
             // console.log(filterPrice);
             if (parseInt(userPriceRange) === filterPrice) {
                 filteredRestaurants.push(res.restaurants[i]);
@@ -172,10 +176,12 @@ function doStuff(start, cityID){
         if (filteredRestaurants.length === 0) {
            if (start <= 80) {
                start += 20;
+               $("#resultsDisplay").append("Searching... ");
                 doStuff(start, cityID);
             }
             else {
-                alert("Sorry!");
+                $("#resultsDisplay").empty();
+                $("#resultsDisplay").append("Sorry, we couldn't find a restaurant with that rating out of the 100+ options we searched in this city. Please try one rating lower or a neighboring city!");
             }
         }
         else {
