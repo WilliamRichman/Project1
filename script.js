@@ -7,8 +7,12 @@ let restHours = "";
 let restPrice = "";
 let restAVGfor2 = "";
 let restMenuLink = "";
+<<<<<<< HEAD
 let lat;
 let lon;
+=======
+let cuisineType = "";
+>>>>>>> 2ff98e2ba8311aa29729b211fee5b40e2bc38649
 
 
 // Waiting for someone to click on a dollar sign
