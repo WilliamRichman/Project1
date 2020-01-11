@@ -30,7 +30,7 @@ $('#generate').on('click', function(){
         
     //This AJAX call searches through Zomato given the cityID from the previous call and will return one random restaurant.
         $.ajax({
-            url: 'https://developers.zomato.com/api/v2.1/search?entity_id=' + cityID + '&entity_type=city&count50',
+            url: 'https://developers.zomato.com/api/v2.1/search?entity_id=' + cityID + '&entity_type=city&start=40&count=40',
             method: 'GET',
             headers: {
                 'user-key': 'b5075be7d6cf56502c175fb9e26c2396'
@@ -58,7 +58,7 @@ $('#generate').on('click', function(){
 
             
         //This for loop loops through the filteredRestaurants array and creates variables for each filtered restaurant's latitude and longitude coordinates
-            const userDist = 7;
+            const userDist = 20;
             const distFilteredRestaurants = [];
 
             for (let i = 0; i < filteredRestaurants.length; i++) {
@@ -80,11 +80,11 @@ $('#generate').on('click', function(){
 
                     // This compares the filteredDist's results and pushes anything less than or equal to the user selected distance into an empty array named distFiliteredRestaurants
                     if (filteredDist <= userDist) {
-                        distFilteredRestaurants.push(filteredDist);
-                        // console.log(distFilteredRestaurants);
+                        distFilteredRestaurants.push(filteredRestaurants[i]);
+                        console.log(distFilteredRestaurants);
                     }
 
-                    console.log(distFilteredRestaurants);
+                    // console.log(distFilteredRestaurants);
 
                        //The "randRest" set to distance filter
                         const arrayLength = distFilteredRestaurants.length;
@@ -97,7 +97,7 @@ $('#generate').on('click', function(){
                 
             }
             
-            console.log(distFilteredRestaurants);
+            // console.log(distFilteredRestaurants);
 
         // Declared variables to use for appending results to results div
             // const arrayLength = res.results_shown;
