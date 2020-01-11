@@ -89,7 +89,7 @@ $('#generate').on('click', function () {
             for (let i = 0; i < res.restaurants.length; i++) {
                 const filterPrice = res.restaurants[i].restaurant.price_range;
                 // console.log(filterPrice);
-                if (userPriceRange <= filterPrice) {
+                if (userPriceRange === filterPrice) {
                     filteredRestaurants.push(res.restaurants[i]);
                 }
             }
