@@ -9,6 +9,8 @@ let restAVGfor2 = "";
 let restMenuLink = "";
 let cuisineType = "";
 
+
+// Waiting for someone to click on a dollar sign
 document.addEventListener('DOMContentLoaded', function () {
     let stars = document.querySelectorAll('.star');
     stars.forEach(function (star) {
@@ -20,11 +22,13 @@ document.addEventListener('DOMContentLoaded', function () {
     target.dispatchEvent(new MouseEvent('click'));
 });
 
+// What tells us which dollar sign is being clicked
 $('.star').on('click', function () {
     const dollars = $(this).attr('id')
     dollarId = dollars
 });
 
+// This is what changes the diamond to the dollar sign
 function setRating(ev) {
     let span = ev.currentTarget;
     let stars = document.querySelectorAll('.star');
@@ -55,9 +59,7 @@ $('#generate').on('click', function () {
     $("#tempMessage").empty();
     $("#weatherMessage").empty();
     const cityName = $('#searchBar').val();
-    // const cityName = 'mesa, az'
     console.log(cityName);
-    //dollar sin system
 
     // The initial AJAX call that identifies the user's searched city, grabs the latitude, longitude, and cityID.    
     $.ajax({
@@ -68,67 +70,14 @@ $('#generate').on('click', function () {
         }
     }).then(function (response) {
         console.log(response);
-
+        let start = 0;
         const cityID = response.location_suggestions[0].city_id;
-        const lat = response.location_suggestions[0].latitude;
-        const lon = response.location_suggestions[0].longitude;
+        lat = response.location_suggestions[0].latitude;
+        lon = response.location_suggestions[0].longitude;
 
-        //This AJAX call searches through Zomato given the cityID from the previous call and will return one random restaurant.
-        $.ajax({
-            url: 'https://developers.zomato.com/api/v2.1/search?entity_id=' + cityID + '&entity_type=city&count50',
-            method: 'GET',
-            headers: {
-                'user-key': 'b5075be7d6cf56502c175fb9e26c2396'
-            }
-        }).then(function (res) {
-            console.log(res);
-
-            const userPriceRange = dollarId
-            let filteredRestaurants = [];
-            // For loop that actually filters out any result not less than or equal to the userPriceRange
-            for (let i = 0; i < res.restaurants.length; i++) {
-                const filterPrice = res.restaurants[i].restaurant.price_range;
-                // console.log(filterPrice);
-                if (userPriceRange === filterPrice) {
-                    filteredRestaurants.push(res.restaurants[i]);
-                }
-            }
-            // If loop that tells the user there wasn't a result within that monitary range
-            if (filteredRestaurants === 0) {
-                alert("No restaurants found within that monitary range. Sorry!")
-            }
-
-            console.log(filteredRestaurants);
-
-            // Declared variables to use for appending results to results div
-            const arrayLength = res.results_shown;
-            const randRest = filteredRestaurants[Math.floor(Math.random() * (arrayLength))];
-            // const randRest = res.restaurants[Math.floor(Math.random()*(arrayLength))];
-            console.log(randRest);
-            restName = randRest.restaurant.name;
-            restAddress = randRest.restaurant.location.address;
-            restZip = restAddress.slice(-5);
-            restHours = randRest.restaurant.timings;
-            restPrice = randRest.restaurant.price_range;
-            restAVGfor2 = randRest.restaurant.average_cost_for_two;
-            restMenuLink = randRest.restaurant.menu_url;
-            cuisineType = randRest.restaurant.cuisines;
-            $("#resultsDisplay").append('Restaurant Name: ' + restName + '<br>');
-            $("#resultsDisplay").append('Cuisine Type: ' + cuisineType + '<br>');
-            $("#resultsDisplay").append('Restaurant Address: ' + restAddress + '<br>');
-            $("#resultsDisplay").append('Hours Open: ' + restHours + '<br>');
-            $("#resultsDisplay").append('Average Price for two: $' + restAVGfor2 + '<br>');
-            $("#menuLink").append('<a target="_blank" href="' + restMenuLink + '">Menu Link</a>');
-            weatherCall();
-
-            console.log(restName);
-            console.log(restAddress);
-            console.log(restZip);
-            console.log(restHours);
-            console.log(restPrice);
-            console.log(restAVGfor2);
-            console.log(restMenuLink);
-        });
+    //Starts the doStuff function
+        doStuff(start, cityID);
+        
 
     });
 
@@ -195,4 +144,72 @@ function weatherCall(){
         $('#snow').height(50);
         }
     })
+};
+
+
+function doStuff(start, cityID){
+    //This AJAX call searches through Zomato given the cityID from the previous call and will return one random restaurant.
+    $.ajax({
+        url: 'https://developers.zomato.com/api/v2.1/search?entity_id=' + cityID + '&entity_type=city&start='+ start +'&count=40',
+        method: 'GET',
+        headers: {
+            'user-key': 'b5075be7d6cf56502c175fb9e26c2396'
+        }
+    }).then(function (res) {
+        console.log(res);
+
+        const userPriceRange = dollarId;
+        let filteredRestaurants = [];
+        // For loop that actually filters out any result not less than or equal to the userPriceRange
+        for (let i = 0; i < res.restaurants.length; i++) {
+            const filterPrice = res.restaurants[i].restaurant.price_range;
+            // console.log(filterPrice);
+            if (parseInt(userPriceRange) === filterPrice) {
+                filteredRestaurants.push(res.restaurants[i]);
+            }
+        }
+        // If loop that tells the user there wasn't a result within that monitary range
+        if (filteredRestaurants.length === 0) {
+           if (start <= 80) {
+               start += 20;
+                doStuff(start, cityID);
+            }
+            else {
+                alert("Sorry!");
+            }
+        }
+        else {
+            console.log(filteredRestaurants);
+
+            // Declared variables to use for appending results to results div
+            const arrayLength = res.results_shown;
+            const randRest = filteredRestaurants[Math.floor(Math.random() * (filteredRestaurants.length))];
+            console.log(randRest);
+            restName = randRest.restaurant.name;
+            restAddress = randRest.restaurant.location.address;
+            restZip = restAddress.slice(-5);
+            restHours = randRest.restaurant.timings;
+            restPrice = randRest.restaurant.price_range;
+            restAVGfor2 = randRest.restaurant.average_cost_for_two;
+            restMenuLink = randRest.restaurant.menu_url;
+            cuisineType = randRest.restaurant.cuisines
+            $("#resultsDisplay").append('Restaurant Name: ' + restName + '<br>');
+            $("resultsDisplay").append('Cuisine Type: ' + cuisineType + '<br>')
+            $("#resultsDisplay").append('Restaurant Address: ' + restAddress + '<br>');
+            $("#resultsDisplay").append('Hours Open: ' + restHours + '<br>');
+            $("#resultsDisplay").append('Average Price for two: $' + restAVGfor2 + '<br>');
+            $("#menuLink").append('<a target="_blank" href="' + restMenuLink + '">Menu Link</a>');
+            weatherCall();
+
+            console.log(restName);
+            console.log(restAddress);
+            console.log(restZip);
+            console.log(restHours);
+            console.log(restPrice);
+            console.log(restAVGfor2);
+            console.log(restMenuLink);
+        }
+
+
+});
 };
