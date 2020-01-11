@@ -37,7 +37,7 @@ $('#generate').on('click', function(){
             console.log(res);
 
         // Setting variables to use for the filtered price range search
-            const userPriceRange = 2;
+            const userPriceRange = 1;
             let filteredRestaurants = [];
         // For loop that actually filters out any result not less than or equal to the userPriceRange
             for (let i = 0; i < res.restaurants.length; i++) {                
@@ -48,7 +48,7 @@ $('#generate').on('click', function(){
                 }                
             }
         // If loop that tells the user there wasn't a result within that monitary range
-            if (filteredRestaurants === 0) {
+            if (filteredRestaurants === -1) {
                 alert("No restaurants found within that monitary range. Sorry!")
             }
         
