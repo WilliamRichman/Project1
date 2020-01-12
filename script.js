@@ -57,11 +57,13 @@ function setRating(ev) {
 
 //The onclick function that starts the page's seach from the search box.
 $('#generate').on('click', function () {
+    $('#wordResult').empty();
     $("#resultsDisplay").empty();
     $("#menuLink").empty();
     $("#resultsWeather").empty();
     $("#tempMessage").empty();
     $("#weatherMessage").empty();
+    $('#chalkBoard').removeClass('chalk-border')
     const cityName = $('#searchBar').val();
     console.log(cityName);
 
@@ -122,28 +124,28 @@ function weatherCall(){
 
         if (currentWeather === "Rain") {
         $("#weatherMessage").append("And don't forget an umbrella");
-        $("#resultsWeather").append('  <img id="rain" src="assets/img/rain2.png" />')
+        $("#resultsWeather").append('&nbsp <img id="rain" src="assets/img/rain2.png" />')
         $('#rain').width(50); // Units are assumed to be pixels
         $('#rain').height(50);
         }
 
         if (currentWeather === "Clouds") {
         $("#weatherMessage").append("If it looks like it could rain then maybe grab an umbrella");
-        $("#resultsWeather").append('  <img id="clouds" src="assets/img/clouds.png" />')
+        $("#resultsWeather").append('&nbsp <img id="clouds" src="assets/img/clouds.png" />')
         $('#clouds').width(50); // Units are assumed to be pixels
         $('#clouds').height(50);
         }
 
         if (currentWeather === "Clear") {
         $("#weatherMessage").append("Looks like it'll be a beautiful day");
-        $("#resultsWeather").append('<img id="sunny" src="assets/img/sunny.png" />')
+        $("#resultsWeather").append('&nbsp <img id="sunny" src="assets/img/sunny.png" />')
         $('#sunny').width(50); // Units are assumed to be pixels
         $('#sunny').height(50);
         }
 
         if (currentWeather === "Snow") {
         $("#weatherMessage").append("Be careful as you travel!");
-        $("#resultsWeather").append('<img id="snow" src="assets/img/snow.png" />')
+        $("#resultsWeather").append('&nbsp <img id="snow" src="assets/img/snow.png" />')
         $('#snow').width(50); // Units are assumed to be pixels
         $('#snow').height(50);
         }
@@ -200,6 +202,8 @@ function doStuff(start, cityID){
             restMenuLink = randRest.restaurant.menu_url;
             cuisineType = randRest.restaurant.cuisines
             $("#resultsDisplay").empty();
+            $('#wordResult').text('Your Results:');
+            $('#chalkBoard').addClass('chalk-border');
             $("#resultsDisplay").append('Restaurant Name: ' + restName + '<br>');
             $("resultsDisplay").append('Cuisine Type: ' + cuisineType + '<br>')
             $("#resultsDisplay").append('Restaurant Address: ' + restAddress + '<br>');

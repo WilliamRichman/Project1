@@ -24,16 +24,17 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="jumbotron jumbotron-background">
-            <h1>Not sure of where to eat? Let US decide!</h1>
+            <h1 class= "slogan">Not sure of where to eat? Let US decide!</h1>
             <br />
             <div>
-              <h2>Step 1: Enter your City and State</h2>
+              <h2>Step 1: Enter your City and State/Country</h2>
               <input type="CityState" style="width: 200px" class="form-control form1" id="searchBar"
-                placeholder="City, State" />
+                placeholder="City, State/Country" />
             </div>
             <br />
 
             <h2>Step 2: How much do you want to spend?</h2>
+            
             
             <div class="stars" data-rating="2">
               <span class="star" id="1">&nbsp;</span>
@@ -44,16 +45,30 @@
 
             <br>
 
+            <div class="chalk-border explanation" id= chalkBoard1>
+              <p>the dollar signs represent the average cost for two.</p>
+              <p>$ = $10-$20 &nbsp &nbsp &nbsp $$ = $20-$35 &nbsp &nbsp &nbsp $$$ = $35-$50 &nbsp &nbsp &nbsp $$$$ = $50+</p>
+            </div>
+
+            <br>
+
             <button class="btn btn-primary btn-lg" id="generate">
               Pick for me!
             </button>
+            
 
-            <div class="results" id=resultsDisplay></div>
-            <div id=menuLink></div>
             <br>
-            <div id=resultsWeather></div>
-            <div id=tempMessage></div>
-            <div id=weatherMessage></div>
+            
+            <div class= "wordResults" id= wordResult></div>
+
+            <div class="" id= chalkBoard>
+              <div class="results" id=resultsDisplay></div>
+              <div class="results" id=menuLink></div>
+              <br>
+              <div class="results" id=resultsWeather></div>
+              <div class="results" id=tempMessage></div>
+              <div class="results" id=weatherMessage></div>
+            </div>
 
           </div>
         </div>

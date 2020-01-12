@@ -16,6 +16,11 @@ body {
     color: rgb(201, 100, 100);
 }
 
+.slogan {
+  font-size: 50px;
+  text-decoration: underline;
+}
+
 .container {
     text-align: center;
     /* width: 700px;
@@ -35,7 +40,7 @@ body {
 }
 
 .results {
-    padding: 20px;
+    font-size: 22px;
 }
 
 .star{
@@ -52,40 +57,21 @@ body {
     content: '\FF04';
     color: rgb(7, 173, 21);
   }
+  
+.chalk-border {
+  border: 25px solid rgba(255,255,255,.8);
+  border-image: url("https://www.unicefusa.org/sites/default/files/answer-box.png") 20;
+}
+  
+.chalk-border:before {
+  content: "";
+}
 
-  .slidecontainer {
-    width: 100%;
-  }
-  
-  .slider {
-    -webkit-appearance: none;
-    width: 20%;
-    height: 25px;
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-  }
-  
-  .slider:hover {
-    opacity: 1;
-  }
-  
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    background: #4CAF50;
-    cursor: pointer;
-  }
-  
-  .slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    background: #4CAF50;
-    cursor: pointer;
-  }
-  
-  
+.wordResults {
+  padding-top: 20px;
+  font-size: 40px;
+}
+
+.explanation {
+  font-size: 22px;
+}
