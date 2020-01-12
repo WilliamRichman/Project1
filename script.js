@@ -199,6 +199,7 @@ function doStuff(start, cityID){
             restAVGfor2 = randRest.restaurant.average_cost_for_two;
             restMenuLink = randRest.restaurant.menu_url;
             cuisineType = randRest.restaurant.cuisines
+            $("#resultsDisplay").empty();
             $("#resultsDisplay").append('Restaurant Name: ' + restName + '<br>');
             $("resultsDisplay").append('Cuisine Type: ' + cuisineType + '<br>')
             $("#resultsDisplay").append('Restaurant Address: ' + restAddress + '<br>');
