@@ -65,7 +65,6 @@ $('#generate').on('click', function () {
     $("#weatherMessage").empty();
     $('#chalkBoard').removeClass('chalk-border')
     const cityName = $('#searchBar').val();
-    console.log(cityName);
 
     // The initial AJAX call that identifies the user's searched city, grabs the latitude, longitude, and cityID.    
     $.ajax({
@@ -75,7 +74,6 @@ $('#generate').on('click', function () {
             'user-key': 'b5075be7d6cf56502c175fb9e26c2396'
         }
     }).then(function (response) {
-        console.log(response);
         let start = 0;
         const cityID = response.location_suggestions[0].city_id;
         lat = response.location_suggestions[0].latitude;
@@ -162,14 +160,12 @@ function doStuff(start, cityID){
             'user-key': 'b5075be7d6cf56502c175fb9e26c2396'
         }
     }).then(function (res) {
-        console.log(res);
 
         userPriceRange = dollarId;
         let filteredRestaurants = [];
         // For loop that actually filters out any result not less than or equal to the userPriceRange
         for (let i = 0; i < res.restaurants.length; i++) {
             filterPrice = res.restaurants[i].restaurant.price_range;
-            // console.log(filterPrice);
             if (parseInt(userPriceRange) === filterPrice) {
                 filteredRestaurants.push(res.restaurants[i]);
             }
@@ -187,12 +183,9 @@ function doStuff(start, cityID){
             }
         }
         else {
-            console.log(filteredRestaurants);
-
             // Declared variables to use for appending results to results div
             const arrayLength = res.results_shown;
             const randRest = filteredRestaurants[Math.floor(Math.random() * (filteredRestaurants.length))];
-            console.log(randRest);
             restName = randRest.restaurant.name;
             restAddress = randRest.restaurant.location.address;
             restZip = restAddress.slice(-5);
@@ -211,14 +204,6 @@ function doStuff(start, cityID){
             $("#resultsDisplay").append('Average Price for two: $' + restAVGfor2 + '<br>');
             $("#menuLink").append('<a target="_blank" href="' + restMenuLink + '">Menu Link</a>');
             weatherCall();
-
-            console.log(restName);
-            console.log(restAddress);
-            console.log(restZip);
-            console.log(restHours);
-            console.log(restPrice);
-            console.log(restAVGfor2);
-            console.log(restMenuLink);
         }
 
 
